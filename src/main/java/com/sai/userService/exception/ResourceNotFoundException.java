@@ -1,4 +1,4 @@
-package com.sai.user.service.exception;
+package com.sai.userService.exception;
 
 public class ResourceNotFoundException extends RuntimeException{
 	public ResourceNotFoundException() {

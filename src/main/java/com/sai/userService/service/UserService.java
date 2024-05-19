@@ -1,8 +1,10 @@
-package com.sai.user.service.services;
+package com.sai.userService.service;
 
 import java.util.List;
 
-import com.sai.user.service.entities.User;
+import com.sai.userService.model.User;
+
+
 
 public interface UserService {
 	

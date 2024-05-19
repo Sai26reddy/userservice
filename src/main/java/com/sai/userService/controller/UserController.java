@@ -1,4 +1,4 @@
-package com.sai.user.service.controller;
+package com.sai.userService.controller;
 
 import java.util.List;
 
@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sai.user.service.entities.User;
-import com.sai.user.service.services.UserService;
+import com.sai.userService.model.User;
+import com.sai.userService.service.UserService;
+
+
 
 @RestController
 @RequestMapping("/users")
@@ -22,19 +24,19 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping("/createUser")
+	@PostMapping
 	public ResponseEntity<User> createUser(@RequestBody User user){
 		User user1 = userService.saveUser(user);
 		return ResponseEntity.status(HttpStatus.CREATED).body(user1);
 	}
 	
-	@GetMapping("/getUser/{userId}")
+	@GetMapping("/{userId}")
 	public ResponseEntity<User> getSingleUser(@PathVariable String userId){
 		User user = userService.getUser(userId);
 		return ResponseEntity.ok(user);
 	}
 	
-	@GetMapping("/getAllUsers")
+	@GetMapping
 	public ResponseEntity<List<User>> getAllUser(){
 		List<User> allUser = userService.getAllUser();
 		return ResponseEntity.ok(allUser);
