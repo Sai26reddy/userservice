@@ -1,10 +1,11 @@
 package com.sai.userService.service;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
+import com.sai.userService.exception.ResourceNotFoundException;
+import com.sai.userService.external.services.HotelService;
+import com.sai.userService.model.Hotel;
+import com.sai.userService.model.Rating;
+import com.sai.userService.model.User;
+import com.sai.userService.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.sai.userService.exception.ResourceNotFoundException;
-import com.sai.userService.external.services.HotelService;
-import com.sai.userService.model.Hotel;
-import com.sai.userService.model.Rating;
-import com.sai.userService.model.User;
-import com.sai.userService.repository.UserRepository;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 
@@ -58,7 +57,7 @@ public class UserServiceImpl implements UserService{
 			user.setRatings(finalratings);
 			return user;
 		}).collect(Collectors.toList());
-		return finalusers;
+		return users;
 	}
 
 	@Override
